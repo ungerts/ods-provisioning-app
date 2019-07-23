@@ -8,10 +8,10 @@ node {
   dockerRegistry = env.DOCKER_REGISTRY
 }
 
-library identifier: 'ods-library@production', retriever: modernSCM(
-  [$class: 'GitSCMSource',
-   remote: sharedLibraryRepository,
-   credentialsId: credentialsId])
+//library identifier: 'ods-library@production', retriever: modernSCM(
+//  [$class: 'GitSCMSource',
+//   remote: sharedLibraryRepository,
+//   credentialsId: credentialsId])
 
 // See readme of shared library for usage and customization.
 odsPipeline(
@@ -25,9 +25,9 @@ odsPipeline(
   sonarQubeBranch: '*'
 ) { context ->
   stageBuild(context)
-  stageScanForSonarqube(context)
-  stageStartOpenshiftBuild(context)
-  stageDeployToOpenshift(context)
+//  stageScanForSonarqube(context)
+//  stageStartOpenshiftBuild(context)
+//  stageDeployToOpenshift(context)
 }
 
 def stageBuild(def context) {
