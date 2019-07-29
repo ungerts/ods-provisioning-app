@@ -51,6 +51,6 @@ def stageBuild(def context) {
 
 def stageStash(def context) {
   stage('Stash') {
-    stash name: "${context.componentId"}-${context.buildNumber}, includes: 'build/test-results/test/*.xml'
+    stash name: "${context.componentId}-${context.buildNumber}", includes: 'build/test-results/test/*.xml'
   }
 }
