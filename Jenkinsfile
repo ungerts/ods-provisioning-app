@@ -25,6 +25,7 @@ odsPipeline(
   sonarQubeBranch: '*'
 ) { context ->
   stageBuild(context)
+  stageStash(context)
 //  stageScanForSonarqube(context)
 //  stageStartOpenshiftBuild(context)
 //  stageDeployToOpenshift(context)
@@ -45,5 +46,11 @@ def stageBuild(def context) {
         error "Build failed!"
       }
     }
+  }
+}
+
+def stageStash(def context) {
+  stage('Stash') {
+    stash name: "${context.componentId"}-${context.buildNumber}, includes: 'build/test-results/test/*.xml'
   }
 }
